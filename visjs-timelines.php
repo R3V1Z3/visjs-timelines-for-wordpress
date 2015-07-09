@@ -55,7 +55,7 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 			$a = shortcode_atts( array(
 				'id' => 'timeline1',
 				'template' => 'default',
-				'args' => 'post_type=timeline',
+				'args' => 'post_type=post',
 				'args2' => '',
 				'args3' => '',
 				'customstartfield' => '',
@@ -83,7 +83,7 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 			$items = array();
 
 			$defaults = array(
-				'post_type' => 'timeline'
+				'post_type' => 'post'
 			);
 
 			foreach ( $query_array as &$query ) {
