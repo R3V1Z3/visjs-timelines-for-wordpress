@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name: Vis.js Timelines plugin for WordPress
- * Version: 1.0
+ * Version: 0.1
  * Plugin URI: http://premium.wpmudev.org
- * Description: Powerful timeline tool relying on the vis.js library and utilizing query-based shortcodes.
+ * Description: Horizontal timeline tool relying on the vis.js library and utilizing query-based shortcodes: [vis-timeline] [vis-timeline post_type="prodcts"]
  * Author: David (incsub)
  * Author URI: http://premium.wpmudev.org/
  * Requires at least: 3.9
@@ -17,7 +17,7 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 
 	class VisjsTimelines {
 
-		var $version = '0.1 beta';
+		var $version = '0.1a';
 		var $name = 'Visjs Timelines';
 		var $dir_name = 'visjs-timelines';
 		var $location = '';
