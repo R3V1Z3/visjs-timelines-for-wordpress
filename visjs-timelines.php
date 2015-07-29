@@ -36,6 +36,8 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 		}
 
 		public function enqueue_scripts(){
+			wp_enqueue_script( 'jquery' );
+			//  allow use of CDN with a define statement
 			if ( defined( 'TIMELINES_PLUS_CDN' ) && constant( 'TIMELINES_PLUS_CDN' ) ) {
 				wp_enqueue_style( 'vis-js-css', '//cdnjs.cloudflare.com/ajax/libs/vis/3.5.0/vis.min.css' );
 				wp_enqueue_script( 'vis-js', '//cdnjs.cloudflare.com/ajax/libs/vis/3.5.0/vis.min.js' );
@@ -43,9 +45,6 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 				wp_enqueue_style( 'vis-js-css', plugins_url( 'css/vis.css', __FILE__ ) );
 				wp_enqueue_script( 'vis-js', plugins_url( 'js/vis.min.js', __FILE__ ) );
 			}
-
-			wp_enqueue_script( 'jquery' );
-
 			wp_enqueue_script( 'visjs-timelines-js', plugins_url( 'js/visjs-timelines.js', __FILE__ ), array( 'jquery' ), '1.0' );
 		}
 
@@ -53,9 +52,9 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 
 			// get shortcode attributes
 			$a = shortcode_atts( array(
-				'id' => 'timeline1',
+				'id' => 'timeline1', // TODO: add increment function for ids
 				'template' => 'default',
-				'args' => 'post_type=post',
+				'args' => 'post_type=post', //TODO: accept array of args
 				'args2' => '',
 				'args3' => '',
 				'customstartfield' => '',
@@ -119,6 +118,8 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 				// reset query
 				wp_reset_postdata();
 			}
+			// TODO: add hook here
+			// return apply_filters('timeline_get_timeline_content', $items, $query_array);
 			return $items;
 		}
 
@@ -131,6 +132,8 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 			$return .= '<div class="arrow right"></div>';
 			$return .= '</div>'; // slider
 			$return .= '</div>'; // timeline-id
+			// TODO: add hook here
+			// return apply_filters('timeline_timeline_html', $return, $div_id, $template);
 			return $return;
 		}
 
@@ -144,10 +147,11 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 				'security' => wp_create_nonce( 'ajax-nonce' )
 			);
 			wp_localize_script( 'visjs-timelines-js', 'visjs_timelines_ajax', $timelines_plus_ajax );
+			// TODO: we can't just add a javascript hook, so we'll make it possible for user to provide his own script
 		}
 
 		public function timeline_post_content_callback(){
-			//check_ajax_referer( 'ajax-nonce', 'security' );
+			// TODO: check_ajax_referer( 'ajax-nonce', 'security' );
 			$post_id = intval( $_POST[ 'id' ] );
 			$post = get_post( $post_id, OBJECT );
 			$response = '<div>';
@@ -157,6 +161,8 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 			$response .= '<div class="entry-content">';
 			$response .= apply_filters( 'the_content', $post->post_content );
 			$response .= '</div></div>';
+			// TODO: add hook here as well
+			// echo apply_filters('timeline_post_content_callback', $response, $post_id);
 			echo $response;
 			die(1);
 		}
