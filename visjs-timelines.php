@@ -166,6 +166,5 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 	}
 }
 
-global $visjs_timelines;
 $visjs_timelines = new VisjsTimelines();
 ?>
