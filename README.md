@@ -1,5 +1,9 @@
-# Vis.js Timelines for WordPress
+# Vis.js Timelines plugin for WordPress
+Horizontal timelines for WordPress using Vis.js. Proivdes a [vis-timeline] shortcode that renders a timeline with all WordPress posts, or alternatively, a custom query.
 
-Horizontal timelines for WordPress using Vis.js Timelines, a lightweight yet incredibly powerful JavaScript library.
-
-This plugin provides a shortcode to create timelines based on post queries you specify (custom post types are fully supported too) and pulls the post content via ajax to simplify the user experience.
+# Optional shortcode parameters:
+id: CSS id of surrounding div (default: 'timeline1')
+args: custom query args (default: 'post_type=post')
+customstartfield: custom field to use as start date
+customendfield: custom field to use as end date
+customtypefield: custom field to use for type of timeline
