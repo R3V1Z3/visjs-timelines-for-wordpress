@@ -118,8 +118,7 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 				// reset query
 				wp_reset_postdata();
 			}
-			// TODO: add hook here
-			// return apply_filters('timeline_get_timeline_content', $items, $query_array);
+			$items = apply_filters('timeline_get_timeline_content', $items, $query_array);
 			return $items;
 		}
 
@@ -132,8 +131,7 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 			$return .= '<div class="arrow right"></div>';
 			$return .= '</div>'; // slider
 			$return .= '</div>'; // timeline-id
-			// TODO: add hook here
-			// return apply_filters('timeline_timeline_html', $return, $div_id, $template);
+			$return = apply_filters('timeline_html', $return, $div_id, $template);
 			return $return;
 		}
 
@@ -161,8 +159,7 @@ if ( !class_exists( 'VisjsTimelines' ) ) {
 			$response .= '<div class="entry-content">';
 			$response .= apply_filters( 'the_content', $post->post_content );
 			$response .= '</div></div>';
-			// TODO: add hook here as well
-			// echo apply_filters('timeline_post_content_callback', $response, $post_id);
+			$response = apply_filters('timeline_post_content_callback', $response, $post_id);
 			echo $response;
 			die(1);
 		}
